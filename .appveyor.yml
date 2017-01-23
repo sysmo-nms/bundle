@@ -5,7 +5,7 @@ platform:
     - Win32
 
 build_script:
-    - .\reltool.cmd
+    - .\bundle.cmd
 
 artifacts:
     - path: _build\Sysmo-NMS-*.exe
