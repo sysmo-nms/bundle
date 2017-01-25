@@ -21,6 +21,7 @@ if "%PLATFORM%" == "Win32" (
     set java_location="https://github.com/sysmo-nms/bundle/releases/download/RESSOURCES/jre-8u111-windows-i586.exe"
 ) else (
     set WIX_ARCH=x64
+    set COMMON_ARCH=x64
     set VCREDIST_INSTALLER_2010=%ressources%\2015_vcredist_x64.exe
     set VCREDIST_INSTALLER_2015=%ressources%\2010_vcredist_x64.exe
     set JAVA_INSTALLER=%ressources%\jre8_64.exe
@@ -40,11 +41,11 @@ copy /y %VCREDIST_INSTALLER_2015% _build\vcredist_2015.exe
 if not exist "%JAVA_INSTALLER%" curl -fSL -o "%JAVA_INSTALLER%"     %java_location%
 copy /y %JAVA_INSTALLER% _build\jre.exe
 
-set OPERATOR_INSTALLER="_build\__operator_installer.msi"
-set CORE_INSTALLER="_build\__core_installer.msi"
+set OPERATOR_INSTALLER=_build\__operator_installer.msi
+set CORE_INSTALLER=_build\__core_installer.msi
 
-curl -fSL -o "%CORE_INSTALLER%" %core_msi_location%
-curl -fSL -o "%OPERATOR_INSTALLER%" %operator_msi_location%
+curl -fSL -o %CORE_INSTALLER% %core_msi_location%
+curl -fSL -o %OPERATOR_INSTALLER% %operator_msi_location%
 
 :: Wix bundle
 set PATH=C:\Program Files (x86)\Wix Toolset v3.10\bin;%PATH%
