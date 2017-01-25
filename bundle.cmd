@@ -5,7 +5,7 @@ mkdir _build
 set ressources=%USERPROFILE%\SYSMO_NMS_RESSOURCES
 set CORE_VERSION=2.0.1
 set OPERATOR_VERSION=2.0.3
-set BUNDLE_VERSION=2.0
+set BUNDLE_VERSION=1.0
 if not exist %ressources% mkdir %ressources%
 
 if not DEFINED PLATFORM set PLATFORM=x64
