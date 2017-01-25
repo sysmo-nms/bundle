@@ -54,5 +54,5 @@ set wix_opts= -v -nologo -ext WixNetFxExtension -ext WixBalExtension -ext WixUti
 @echo "Run candle.exe"
 candle.exe %wix_opts% -arch %WIX_ARCH% -o _build\bundle.wixobj bundle.wxs
 @echo "Run light.exe"
-light.exe %wix_opts% -o _build\Sysmo-NMS-%BUNDLE_VERSION%-%PLATFORM%.exe _build\bundle.wixobj
+light.exe %wix_opts% -o _build\Sysmo-NMS-%BUNDLE_VERSION%-%COMMON_ARCH%.exe _build\bundle.wixobj
 @echo "End of installer build"
