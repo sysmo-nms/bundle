@@ -1,11 +1,14 @@
+::
+set BUNDLE_VERSION=1.1
+set CORE_VERSION=2.0.2
+set OPERATOR_VERSION=2.0.4
+
 :: Cleanup
+rmdir /s /q _build
 mkdir _build
 
 :: Build installer bundle
 set ressources=%USERPROFILE%\SYSMO_NMS_RESSOURCES
-set CORE_VERSION=2.0.1
-set OPERATOR_VERSION=2.0.3
-set BUNDLE_VERSION=1.0
 if not exist %ressources% mkdir %ressources%
 
 if not DEFINED PLATFORM set PLATFORM=x64
@@ -30,8 +33,8 @@ if "%PLATFORM%" == "Win32" (
     set java_location="https://github.com/sysmo-nms/bundle/releases/download/RESSOURCES/jre-8u111-windows-x64.exe"
 )
 
-set core_msi_location="https://github.com/sysmo-nms/sysmo-core/releases/download/%CORE_VERSION%/zcore-%COMMON_ARCH%.msi"
-set operator_msi_location="https://github.com/sysmo-nms/sysmo-operator/releases/download/%OPERATOR_VERSION%/operator-%COMMON_ARCH%.msi"
+set core_msi_location="https://github.com/sysmo-nms/sysmo-core/releases/download/%CORE_VERSION%/__installer-%COMMON_ARCH%.msi"
+set operator_msi_location="https://github.com/sysmo-nms/sysmo-operator/releases/download/%OPERATOR_VERSION%/__installer-%COMMON_ARCH%.msi"
 
 if not exist "%VCREDIST_INSTALLER_2010%" curl -fSL -o "%VCREDIST_INSTALLER_2010%" %vcredist_location_2010%
 copy /y %VCREDIST_INSTALLER_2010% _build\vcredist_2010.exe
