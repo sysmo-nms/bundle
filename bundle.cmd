@@ -11,7 +11,8 @@ mkdir _build
 @if not DEFINED PLATFORM set PLATFORM=x64
 
 @if "%PLATFORM%" == "Win32" (
-    @set WIX_ARCH=i586
+    @set WIX_ARCH=x86
+    @set COMMON_ARCH=i586
     @set VCREDIST_INSTALLER_2010=%ressources%\2015_vcredist_x86.exe
     @set VCREDIST_INSTALLER_2015=%ressources%\2010_vcredist_x86.exe
     @set JAVA_INSTALLER=%ressources%\jre8_586.exe
@@ -20,16 +21,16 @@ mkdir _build
     @set java_location="https://github.com/sysmo-nms/bundle/releases/download/RESSOURCES/jre-8u111-windows-i586.exe"
 ) else (
     @set WIX_ARCH=x64
-    @set VCREDIST_INSTALLER_2010=%ressources%\2015_vcredist_x86.exe
-    @set VCREDIST_INSTALLER_2015=%ressources%\2010_vcredist_x86.exe
+    @set VCREDIST_INSTALLER_2010=%ressources%\2015_vcredist_x64.exe
+    @set VCREDIST_INSTALLER_2015=%ressources%\2010_vcredist_x64.exe
     @set JAVA_INSTALLER=%ressources%\jre8_64.exe
     @set vcredist_location_2010="https://github.com/sysmo-nms/bundle/releases/download/RESSOURCES/msvc2010_vc_redist.x64.exe"
     @set vcredist_location_2015="https://github.com/sysmo-nms/bundle/releases/download/RESSOURCES/msvc2015_vc_redist.x64.exe"
     @set java_location="https://github.com/sysmo-nms/bundle/releases/download/RESSOURCES/jre-8u111-windows-x64.exe"
 )
 
-@set core_msi_location="https://github.com/sysmo-nms/sysmo-core/releases/download/%CORE_VERSION%/zcore-%WIX_ARCH%.msi"
-@set operator_msi_location="https://github.com/sysmo-nms/sysmo-operator/releases/download/%OPERATOR_VERSION%/operator-%WIX_ARCH%.msi"
+@set core_msi_location="https://github.com/sysmo-nms/sysmo-core/releases/download/%CORE_VERSION%/zcore-%COMMON_ARCH%.msi"
+@set operator_msi_location="https://github.com/sysmo-nms/sysmo-operator/releases/download/%OPERATOR_VERSION%/operator-%COMMON_ARCH%.msi"
 
 if not exist "%VCREDIST_INSTALLER_2010%" curl -fSL -o "%VCREDIST_INSTALLER_2010%" %vcredist_location_2010%
 copy /y %VCREDIST_INSTALLER_2010% _build\vcredist_2010.exe
