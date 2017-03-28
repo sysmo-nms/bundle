@@ -1,7 +1,8 @@
 ::
-set BUNDLE_VERSION=2.6
+set BUNDLE_VERSION=2.7
+
 set CORE_VERSION=2.0.3
-set OPERATOR_VERSION=2.0.8
+set OPERATOR_VERSION=2.0.9
 
 :: Cleanup
 rmdir /s /q _build
